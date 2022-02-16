@@ -139,7 +139,7 @@ let mySecondObject = myObject; /*két irányba is működik, tehát ha megválto
 mySecondObject.myString = "domdomdom" 
 
 /*Object copy*/
-let myFourthObject = {...myObject};
+/*let myFourthObject = {...myObject};
 myFourthObject.myString = "Vacskamati";
 
 console.log(myObject.myString);
@@ -154,3 +154,22 @@ az objectnél új változót hoztunk létre, ami már más object és false lesz
 /* console.log("" === "");
 console.log({} === {}); */
 
+
+/* window.addEventListener("load", function(){
+    console.log("My first function")
+})
+ */
+
+function loadEvent() {
+    console.log("My second Function");
+    for (const movie of movies) {
+        document.getElementById("root").insertAdjacentHTML("beforeend", `
+        <div class="card">
+            <h1>${movie.title}</h1>
+            <h2>${movie.year}</h2>
+            <h2>${movie.rate}</h2>
+        </div>
+        `)
+    }
+}
+window.addEventListener("load", loadEvent);
