@@ -106,11 +106,51 @@ g.myMethod()
 }
 window.addEventListener("load",loadEvent) */
 
-let h = {
+/* let h = {
     anotherMethod: function(text){
         return `You sent the following argument to this method: ${text}`
     }
 }
 let i = h.anotherMethod("argument")
 console.log(i);
-console.log(h.anotherMethod("another argument"));
+console.log(h.anotherMethod("another argument")); */
+
+/* let myString = "mikkaMakka";
+
+let mySecondString = myString;
+
+let myThirdString = "mikkaMakka";
+
+console.log(myString);
+console.log(mySecondString);
+console.log(myString === mySecondString);
+console.log(myString === myThirdString); */
+
+/* let myObject = {
+    myString: "MikkaMakka"
+};
+
+let mySecondObject = myObject; /*két irányba is működik, tehát ha megváltoztatom a mySecondobject értékét, akkor megváltozik a myObject is*/
+
+/*let myThirdObject = {
+    myString: "MikkaMakka"
+};
+
+mySecondObject.myString = "domdomdom" 
+
+/*Object copy*/
+let myFourthObject = {...myObject};
+myFourthObject.myString = "Vacskamati";
+
+console.log(myObject.myString);
+console.log(myFourthObject.myString);
+ */
+
+/* console.log(myObject === mySecondObject);
+console.log(myObject === myThirdObject); 
+ */
+/*A string, szám az true lesz;
+az objectnél új változót hoztunk létre, ami már más object és false lesz*/
+/* console.log("" === "");
+console.log({} === {}); */
+
