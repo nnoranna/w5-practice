@@ -162,14 +162,58 @@ console.log({} === {}); */
 
 function loadEvent() {
     console.log("My second Function");
-    for (const movie of movies) {
-        document.getElementById("root").insertAdjacentHTML("beforeend", `
+    let rootElement = document.getElementById("root")
+
+    /*függvényt belementettük a változóba, azért jó mert nem fog összekeveredni a kódunk, debug miatt is, és fenntarthatóbb*/
+    /*let card = function (movieReceived){
+        return `
         <div class="card">
-            <h1>${movie.title}</h1>
-            <h2>${movie.year}</h2>
-            <h2>${movie.rate}</h2>
-        </div>
-        `)
+            <h2>${movieReceived.title}</h2>
+            <time>${movieReceived.year}</time>
+            <div class="rate">${movieReceived.rate}</div>
+        </div>`;
+    };*/
+
+    let card2 = function (title, year, rate){
+        return `
+        <div class="card">
+            <h2>${title}</h2>
+            <time>${year}</time>
+            <div class="rate">${rate}</div>
+        </div>`;
+    };
+    
+    /*rootElement.insertAdjacentHTML("beforeend", card({
+        "title": "Inception",
+        "year": 2010,
+        "rate": 9.9
+    }));
+
+    let actuallyFavouriteMovie = {
+        "title": "Her",
+        "year": 2000,
+        "rate": 9.8
+    }
+    rootElement.insertAdjacentHTML("beforeend", card(actuallyFavouriteMovie));
+    
+    rootElement.insertAdjacentHTML("beforeend", card(movies[0]));
+
+
+    for (const movieSend of movies) {
+        rootElement.insertAdjacentHTML("beforeend", card(movieSend));
+    }
+}*/
+
+    let anotherFavouriteMovie = {
+        "title": "The Last Boy Scout",
+        "year": 1991,
+        "rate": 7.0,
+    }
+
+    rootElement.insertAdjacentHTML("beforeend", card2(anotherFavouriteMovie.title, anotherFavouriteMovie.year, anotherFavouriteMovie.rate));
+
+    for (const movieSend of movies) {
+        rootElement.insertAdjacentHTML("beforeend", card2(movieSend.title, movieSend.year, movieSend.rate));
     }
 }
 window.addEventListener("load", loadEvent);
