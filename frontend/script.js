@@ -161,7 +161,7 @@ console.log({} === {}); */
  */
 
 function loadEvent() {
-    console.log("My second Function");
+
     let rootElement = document.getElementById("root")
 
     let card2 = function (title, year, rate){
@@ -174,44 +174,29 @@ function loadEvent() {
     }
     
     let renderAllCardElements = function (incomingMoviesArray) {
-        let renderedCardList = "";
-        
+        let renderedCardList = `<div class="cards>`;
         /*for ciklus, ami végigmegy a cardsarray-en*/
         for (const incomingMovie of incomingMoviesArray) {
-            renderedCardList += `
+            renderedCardList += card2(incomingMovie.title, incomingMovie.year, incomingMovie.rate)
+/*            renderedCardList += `
             <div class="card">
                 <h2>${incomingMovie.title}</h2>
                 <time>${incomingMovie.year}</time>
                 <div class="rate">${incomingMovie.rate}</div>
-            </div>`;
-            
+            </div>
+            `*/
         }
+        renderedCardList+=`</div>` 
         console.log(renderedCardList);
-        /*return-öli az elkészült elemekkel feltöltött cardList-et*/
+
         return renderedCardList;
+    }
 
-            /*a for ciklus minden lépcsőjénél hozzáadja a renderCardlisthez az adott elemet a megfelelő cardban,*/
-        }
-
-    /*movies.sort(function(a, b){return a.year - b.year});*/
-
-    let newGoodMovies = [];
+    let newGoodMovies = [];       //következő for ciklussal töltjük fel
 
     for (const movieSend of movies) {
-        /*let newerThan2000 = false;
-
-        if (movieSend.year > 2000) {
-            newerThan2000 = true;
-        }
-        if (newerThan2000)*/ 
-
-        //let floorRate = Math.floor(movieSend.rate);
-
-
-        /*filterezi a csak 2000 utáni filmeket*/
         if (movieSend.year > 2000 && movieSend.rate >= 8) {
             newGoodMovies.push(movieSend);    
-            /*rootElement.insertAdjacentHTML("beforeend", card2(movieSend.title, movieSend.year, floorRate));*/
         }
     }
     newGoodMovies.sort(function(a, b){return a.year - b.year});
