@@ -164,16 +164,6 @@ function loadEvent() {
     console.log("My second Function");
     let rootElement = document.getElementById("root")
 
-    /*függvényt belementettük a változóba, azért jó mert nem fog összekeveredni a kódunk, debug miatt is, és fenntarthatóbb*/
-    /*let card = function (movieReceived){
-        return `
-        <div class="card">
-            <h2>${movieReceived.title}</h2>
-            <time>${movieReceived.year}</time>
-            <div class="rate">${movieReceived.rate}</div>
-        </div>`;
-    };*/
-
     let card2 = function (title, year, rate){
         return `
         <div class="card">
@@ -181,39 +171,52 @@ function loadEvent() {
             <time>${year}</time>
             <div class="rate">${rate}</div>
         </div>`;
-    };
-    
-    /*rootElement.insertAdjacentHTML("beforeend", card({
-        "title": "Inception",
-        "year": 2010,
-        "rate": 9.9
-    }));
-
-    let actuallyFavouriteMovie = {
-        "title": "Her",
-        "year": 2000,
-        "rate": 9.8
     }
-    rootElement.insertAdjacentHTML("beforeend", card(actuallyFavouriteMovie));
     
-    rootElement.insertAdjacentHTML("beforeend", card(movies[0]));
+    let renderAllCardElements = function (incomingMoviesArray) {
+        let renderedCardList = "";
+        
+        /*for ciklus, ami végigmegy a cardsarray-en*/
+        for (const incomingMovie of incomingMoviesArray) {
+            renderedCardList += `
+            <div class="card">
+                <h2>${incomingMovie.title}</h2>
+                <time>${incomingMovie.year}</time>
+                <div class="rate">${incomingMovie.rate}</div>
+            </div>`;
+            
+        }
+        console.log(renderedCardList);
+        /*return-öli az elkészült elemekkel feltöltött cardList-et*/
+        return renderedCardList;
 
+            /*a for ciklus minden lépcsőjénél hozzáadja a renderCardlisthez az adott elemet a megfelelő cardban,*/
+        }
+
+    /*movies.sort(function(a, b){return a.year - b.year});*/
+
+    let newGoodMovies = [];
 
     for (const movieSend of movies) {
-        rootElement.insertAdjacentHTML("beforeend", card(movieSend));
-    }
-}*/
+        /*let newerThan2000 = false;
 
-    let anotherFavouriteMovie = {
-        "title": "The Last Boy Scout",
-        "year": 1991,
-        "rate": 7.0,
-    }
+        if (movieSend.year > 2000) {
+            newerThan2000 = true;
+        }
+        if (newerThan2000)*/ 
 
-    rootElement.insertAdjacentHTML("beforeend", card2(anotherFavouriteMovie.title, anotherFavouriteMovie.year, anotherFavouriteMovie.rate));
+        //let floorRate = Math.floor(movieSend.rate);
 
-    for (const movieSend of movies) {
-        rootElement.insertAdjacentHTML("beforeend", card2(movieSend.title, movieSend.year, movieSend.rate));
+
+        /*filterezi a csak 2000 utáni filmeket*/
+        if (movieSend.year > 2000 && movieSend.rate >= 8) {
+            newGoodMovies.push(movieSend);    
+            /*rootElement.insertAdjacentHTML("beforeend", card2(movieSend.title, movieSend.year, floorRate));*/
+        }
     }
+    newGoodMovies.sort(function(a, b){return a.year - b.year});
+
+    rootElement.insertAdjacentHTML("beforeend", renderAllCardElements(newGoodMovies))
 }
+
 window.addEventListener("load", loadEvent);
